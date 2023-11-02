@@ -1,3 +1,5 @@
 .*
 flower_venv/
 __pycache__/
+test.py
+images.jpg
