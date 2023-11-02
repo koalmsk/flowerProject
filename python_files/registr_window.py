@@ -59,7 +59,7 @@ class Registr_window(QWidget):
             return None
         
         db_operation.insert_user(user_data=input_data[:-1])
-        self.title_lable.setText(f"Вы успешно зарегистрировали пользователя\n{input_data[0]}")
+        self.title_lable.setText(f"Вы успешно зарегистрировали пользователя\n{input_data[0]}!")
         return None
     
     def to_login_btn_click(self):
