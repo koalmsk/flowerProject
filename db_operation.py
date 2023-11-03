@@ -16,10 +16,9 @@ def format_collections_from_sql(collection) -> list:
 
 def on_start_up():
     CREATE_FLOWER_TABLE = """
-CREATE TABLE IF NOT EXISTS flower (
+CREATE TABLE flower (
     id                 INTEGER REFERENCES user (id),
-    name               TEXT    UNIQUE
-                               PRIMARY KEY,
+    name               TEXT,
     photo              TEXT,
     planted            TEXT,
     recomendation      TEXT,
@@ -80,3 +79,17 @@ def insert_user(user_data: tuple[:2]) -> None:
     """, tuple(user_data))
     db.commit()
 
+
+def is_flower_name_uniq(flower_name: str, id: int) -> bool:
+    sql_request = """
+    SELECT flower.name FROM flower
+    WHERE id = ?
+    """
+    flower_name_list = format_collections_from_sql(cur.execute(sql_request, (id, )).fetchall())
+    return flower_name not in flower_name_list
+
+
+# def insert_flower_text_data(flower_text_data: tuple[:2]) -> None:
+#     pass
+
+print(is_flower_name_uniq("Роза", 1))

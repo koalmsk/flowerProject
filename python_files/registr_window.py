@@ -20,7 +20,6 @@ class Registr_window(QWidget):
         super().__init__()
         uic.loadUi('qt_ui/registr.ui', self)
         self.send_btn.clicked.connect(self.send_btn_clicked)
-        self.to_login_btn.clicked.connect(self.to_login_btn_click)
         self.on_start_up()
 
 
@@ -61,10 +60,6 @@ class Registr_window(QWidget):
         db_operation.insert_user(user_data=input_data[:-1])
         self.title_lable.setText(f"Вы успешно зарегистрировали пользователя\n{input_data[0]}!")
         return None
-    
-    def to_login_btn_click(self):
-        pass
-        
 
         
 
