@@ -1,4 +1,4 @@
-from database import db_operation
+import db_operation
 from PyQt5.QtCore import QPoint
 from PyQt5 import uic
 import sys

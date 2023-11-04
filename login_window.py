@@ -1,8 +1,8 @@
-from database import db_operation
+import db_operation
 from PyQt5.QtCore import QPoint
 from PyQt5 import uic
 import sys
-from python_files.registr_window import Registr_window
+from registr_window import Registr_window
 import datetime
 from PyQt5.QtGui import QImage, QPixmap   
 from PyQt5.QtWidgets import (

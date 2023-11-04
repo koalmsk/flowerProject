@@ -6,17 +6,13 @@ db = sqlite3.connect("database/flower_db.sqlite3")
 cur = db.cursor()
 
 
-def format_dates(date_ints: tuple = None, date_stroke: str = None) -> str or tuple:
-    return ("^".join(map(str, date_ints)) if date_stroke is None else tuple(map(int, date_stroke.split("^"))))
-
-
 def format_collections_from_sql(collection) -> list:
     return list(map(lambda x: x[0], collection))
 
 
 def on_start_up():
     CREATE_FLOWER_TABLE = """
-CREATE TABLE flower (
+CREATE TABLE IF NOT EXISTS flower (
     id                 INTEGER REFERENCES user (id),
     name               TEXT,
     photo              TEXT,
@@ -89,7 +85,14 @@ def is_flower_name_uniq(flower_name: str, id: int) -> bool:
     return flower_name not in flower_name_list
 
 
-# def insert_flower_text_data(flower_text_data: tuple[:2]) -> None:
-#     pass
+def insert_flower(flower_data: tuple) -> None:
+    cur.execute(
+    """
+INSERT INTO flower (id, name, photo, planted, recomendation, how_often_to_water, last_water_date)
+VALUES (?,?,?,?,?,?,?)
+    """, flower_data)
+    db.commit()
 
-print(is_flower_name_uniq("Роза", 1))
+    pass
+
+# print(is_flower_name_uniq("Роза", 1))

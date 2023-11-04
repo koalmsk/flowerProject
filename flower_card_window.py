@@ -1,4 +1,4 @@
-from python_files.flower_card import Flower_card
+from flower_card import Flower_card
 from PyQt5.QtCore import QPoint
 from PyQt5 import uic
 import datetime

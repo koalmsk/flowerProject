@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QApplication
 import sys
-from python_files.login_window import Login_window
-from database import db_operation
+from login_window import Login_window
+import db_operation
 
 
 if __name__ == "__main__":

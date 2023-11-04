@@ -5,11 +5,11 @@ class Flower_card:
 
     def __init__(
             
-    self, name: str, photo: str, recomendation: str,
+    self, name: str,    id: int , photo: str, recomendation: str,
     planted: tuple, how_often_to_water: int, last_water_date: tuple, is_water: bool
 
                 ) -> None:
-        
+        self.id = id
         self.name = name.lower().capitalize().strip()
         self.photo = photo
         self.planted = f"Дата посадки растения: {str(date(*planted))}"

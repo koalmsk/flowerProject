@@ -238,7 +238,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Все поля обязательны к заподлнению</string>
+    <string>Все поля обязательны к заполнению</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
