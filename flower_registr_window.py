@@ -19,7 +19,12 @@ from PyQt5.QtWidgets import (
 
 def is_normal_date(date: str) -> bool:
     date = tuple(map(int, date.split(".")))
-    return datetime.datetime.now() > datetime.datetime(day=date[0], month=date[1], year=date[2])
+    return datetime.datetime.now() > datetime.datetime(day=date[2], month=date[1], year=date[0])
+
+
+def correct_date(date_: str) -> str:
+    return ".".join(reversed(tuple(map(lambda x: str(int(x)), date_.split(".")))))
+
 
 
 
@@ -33,7 +38,7 @@ class Flower_registr(QWidget):
         self.save_card_btn.clicked.connect(self.save_flower_clckd)
 
     def hide_wrongs(self):
-        # self.flowe_title.setText("Заполните карточку ростения")
+        self.flowe_title.setText("Заполните карточку ростения")
         self.wrong_date_lable_1.hide()
         self.wrong_date_lable_2.hide()
         self.wrong_inputs_lable.hide()
@@ -46,20 +51,30 @@ class Flower_registr(QWidget):
         self.text_data = list()
         self.last_water_date = str()
         self.when_planted = str()
+        self.how_often_to_water_input.setText("0")
         self.last_water_date_input.setCalendarPopup(True)
         self.when_planted_input.setCalendarPopup(True)
 
     def get_data(self):
-        self.text_data = (
+        self.text_data = [
             self.id,
             self.flower_name_input.text(),
             self.flower_photo,
-            self.when_planted_input.text(),
+            correct_date(self.when_planted_input.text()),
             self.recomendation_input.toPlainText(),
             self.how_often_to_water_input.text(),
-            self.last_water_date_input.text(),
-        )
-        
+            correct_date(self.last_water_date_input.text())
+        ]
+        print(self.text_data)
+        next_date = correct_date(str(
+            datetime.date(
+                *tuple(
+                    map(int, self.text_data[-1].split("."))
+                    )) + datetime.timedelta(days=int(self.text_data[-2]))
+                ).replace("-", "."))
+        self.text_data.append(next_date)
+
+
         print(self.text_data)
         return all(self.text_data)
 
@@ -84,7 +99,7 @@ class Flower_registr(QWidget):
             self.wrong_flower_name_lable.show()
             return None
         
-        if not is_normal_date(self.text_data[-1]):
+        if not is_normal_date(self.text_data[-2]):
             self.wrong_date_lable_1.show()
             return None
 
@@ -94,7 +109,7 @@ class Flower_registr(QWidget):
             return None
 
         db_operation.insert_flower(self.text_data)
-        # self.flowe_title.setText("Вы успешно зарегистировали ростение")
+        self.flowe_title.setText(f"Вы успешно зарегистировали ростение {self.text_data[1]}")
         return None
     
 

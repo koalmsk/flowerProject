@@ -12,7 +12,7 @@ def format_collections_from_sql(collection) -> list:
 
 def on_start_up():
     CREATE_FLOWER_TABLE = """
-CREATE TABLE IF NOT EXISTS flower (
+CREATE TABLE flower (
     id                 INTEGER REFERENCES user (id),
     name               TEXT,
     photo              TEXT,
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS flower (
     recomendation      TEXT,
     how_often_to_water INTEGER,
     last_water_date    TEXT,
-    is_waterd          INTEGER
+    next_date          TEXT
 );
     """
 
@@ -88,11 +88,22 @@ def is_flower_name_uniq(flower_name: str, id: int) -> bool:
 def insert_flower(flower_data: tuple) -> None:
     cur.execute(
     """
-INSERT INTO flower (id, name, photo, planted, recomendation, how_often_to_water, last_water_date)
-VALUES (?,?,?,?,?,?,?)
+INSERT INTO flower (id, name, photo, planted, recomendation, how_often_to_water, last_water_date, next_date)
+VALUES (?,?,?,?,?,?,?,?)
     """, flower_data)
     db.commit()
 
-    pass
+def load_flowers_for_table(id: int):
+
+    ans = cur.execute("SELECT * FROM flower WHERE flower.id = ?", (id, )).fetchall()
+
+    return ans
+
+def load_login(id: int):
+    ans = (cur.execute("SELECT user.login FROM user WHERE user.id = ?", (id, )).fetchone())[0]
+    return ans
+
+
+print(load_login(1))
 
 # print(is_flower_name_uniq("Роза", 1))
