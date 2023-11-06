@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>727</width>
-    <height>433</height>
+    <width>519</width>
+    <height>424</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -102,12 +102,12 @@
      </column>
      <column>
       <property name="text">
-       <string>Последний раз был полит</string>
+       <string>Был посажен</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Был посажен</string>
+       <string>Последний раз был полит</string>
       </property>
      </column>
      <column>
@@ -172,6 +172,19 @@
    </property>
    <property name="text">
     <string>user_login</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="reload_btn">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>370</y>
+     <width>113</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Обновить</string>
    </property>
   </widget>
  </widget>

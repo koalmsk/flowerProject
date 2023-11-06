@@ -5,19 +5,22 @@ class Flower_card:
 
     def __init__(
             
-    self, name: str,    id: int , photo: str, recomendation: str,
-    planted: tuple, how_often_to_water: int, last_water_date: tuple, is_water: bool
+    self, id: int,
+    name: str, 
+    photo: str, 
+    planted: str,
+    recomendation: str, 
+    how_often_to_water: int, 
+    last_water_date: str, 
+    next_date: str
 
                 ) -> None:
         self.id = id
-        self.name = name.lower().capitalize().strip()
+        self.name = name
         self.photo = photo
-        self.planted = f"Дата посадки растения: {str(date(*planted))}"
+        self.planted = date(*tuple(map(int , planted.split(".")))).strftime("%a %d %b %Y")
         self.recomendation = recomendation.capitalize().strip().replace(".", "\n")
         self.how_often_to_water = timedelta(days=how_often_to_water)
-        self.last_water_date = date(*last_water_date)
-        self.is_water = is_water
-        
-    
+        self.last_water_date = date(*tuple(map(int, last_water_date.split("."))))
+        self.next_date = date(*tuple(map(int , next_date.split("."))))
 
-        

@@ -12,7 +12,7 @@ def format_collections_from_sql(collection) -> list:
 
 def on_start_up():
     CREATE_FLOWER_TABLE = """
-CREATE TABLE flower (
+CREATE TABLE IF NOT EXISTS flower (
     id                 INTEGER REFERENCES user (id),
     name               TEXT,
     photo              TEXT,
@@ -99,11 +99,21 @@ def load_flowers_for_table(id: int):
 
     return ans
 
+def load_flower_by_name(name: str, id: int):
+    return cur.execute("SELECT * FROM flower WHERE flower.name = ? and flower.id = ?", (name, id)).fetchone()
+
 def load_login(id: int):
     ans = (cur.execute("SELECT user.login FROM user WHERE user.id = ?", (id, )).fetchone())[0]
     return ans
 
+def update_flower_card(id: int, name_flower: str, entry: str, value: str):
+    cur.execute(
+    f"""
+UPDATE flower 
+SET {entry} = '{value}'
+WHERE id = {id} and name = '{name_flower}'
+    """)
+    db.commit()
 
-print(load_login(1))
 
 # print(is_flower_name_uniq("Роза", 1))

@@ -1,7 +1,9 @@
 from flower_card import Flower_card
 from PyQt5.QtCore import QPoint
 from PyQt5 import uic
+import sys
 import datetime
+import db_operation
 from PyQt5.QtGui import QImage, QPixmap   
 from PyQt5.QtWidgets import (
     QApplication,
@@ -14,30 +16,70 @@ from PyQt5.QtWidgets import (
     QFileDialog
     )
 
+
+
 class Flower_card_window(QWidget):
     def __init__(self, config: Flower_card) -> None:
         super().__init__()
         uic.loadUi('qt_ui/flowerCard.ui', self)
-        self.formating(config)
+        self.config = config
+        self.formating()
+        self.add_new_photo_btn.clicked.connect(self.add_new_photo_clckd)
+        self.reload_btn.clicked.connect(self.reload)
+
+    def reload(self):
+        reload_name, reload_id = self.config.name, self.config.id
+        self.config = Flower_card(*db_operation.load_flower_by_name(reload_name, reload_id))
+        self.formating()
+
+        
+
+    def add_new_photo_clckd(self):
+        file_name = QFileDialog.getOpenFileName(
+            self, 'Выберите новую картинку', '', 'Картинка (*.jpg);;Картинка (*.png)')[0]
+        if file_name:
+            print(file_name)
+            db_operation.update_flower_card(self.config.id, self.config.name, "photo", file_name)
+            self.reload()
 
 
-    def formating(self, config: Flower_card):
+    def formating(self):
         # название
-        self.flower_name.setText(config.name)
+        self.flower_name.setText(self.config.name.lower().capitalize())
 
         # фото
-        self.photo_viewer = QImage(config.photo)
-        self.flower_image.setPixmap(QPixmap.fromImage(self.photo_viewer))
+        photo  = QImage(self.config.photo)
+        pixmap = QPixmap.fromImage(photo)
+        self.flower_image.setPixmap(pixmap)
 
         # рекомендации
-        self.recomendation_text.setText(config.recomendation)
+        self.recomendation_text.setText(self.config.recomendation)
 
         # дата рождения цветка
-        self.born_date.setText(config.planted)
+        self.planted_date.setText(f"Был посажен: {self.config.planted}")
 
         # последняя дата
-        self.when_water.setText(f"Полит последний раз: {str(config.last_water_date)}")
+        self.when_water.setText(f"Полит последний раз: {self.config.last_water_date.strftime('%a %d %b %Y')}")
 
         # как часто поливать 
-        self.how_often_water.setText(f"Дневной интервал поливки: {str(config.how_often_to_water.days)}")
+        self.how_often_water.setText(f"Дневной интервал поливки: {self.config.how_often_to_water.days}")
 
+        # полить следующий раз
+        self.next_date.setText(f"Дата следующей поливки: {self.config.next_date.strftime('%a %d %b %Y')}")
+
+        # чек бокс
+        print(datetime.datetime.now().date() == self.config.next_date)
+        if datetime.datetime.now().date() != self.config.next_date:
+            self.is_water.setDisabled(True)
+
+        if datetime.datetime.now().date() == self.config.next_date:
+            self.is_water.setEnabled(True)
+
+
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    example_window = Flower_card_window(Flower_card(*db_operation.load_flower_by_name("RAR", 1)))
+    example_window.show()
+    sys.exit(app.exec())
+    

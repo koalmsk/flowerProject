@@ -22,9 +22,10 @@ def is_normal_date(date: str) -> bool:
     return datetime.datetime.now() > datetime.datetime(day=date[2], month=date[1], year=date[0])
 
 
-def correct_date(date_: str) -> str:
-    return ".".join(reversed(tuple(map(lambda x: str(int(x)), date_.split(".")))))
-
+def correct_date(date_: str, f=True) -> str:
+    if f:
+       return ".".join(reversed(tuple(map(lambda x: str(int(x)), date_.split(".")))))
+    return ".".join(tuple(map(lambda x: str(int(x)), date_.split("."))))
 
 
 
@@ -66,13 +67,13 @@ class Flower_registr(QWidget):
             correct_date(self.last_water_date_input.text())
         ]
         print(self.text_data)
-        next_date = correct_date(str(
+        next_date = str(
             datetime.date(
                 *tuple(
                     map(int, self.text_data[-1].split("."))
                     )) + datetime.timedelta(days=int(self.text_data[-2]))
-                ).replace("-", "."))
-        self.text_data.append(next_date)
+                ).replace("-", ".")
+        self.text_data.append(correct_date(next_date, False))
 
 
         print(self.text_data)
@@ -83,8 +84,9 @@ class Flower_registr(QWidget):
     def photo_input_btn_clckd(self):
         file_name = QFileDialog.getOpenFileName(self, 'Выберите картинку', '', 'Картинка (*.jpg);;Картинка (*.png)')[0]
         self.flower_photo = file_name
-        self.flower_photo_directory_lable.setText(file_name)
-        self.flower_photo_directory_lable.show()
+        if file_name:
+            self.flower_photo_directory_lable.setText(file_name)
+            self.flower_photo_directory_lable.show()
 
 
     def save_flower_clckd(self) -> None:

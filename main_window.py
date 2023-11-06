@@ -26,19 +26,23 @@ class Main_window(QWidget):
         uic.loadUi('qt_ui/main.ui', self)
         self.user_id = id
         self.flower_list = db_operation.load_flowers_for_table(self.user_id)
+        
         self.user_login = db_operation.load_login(self.user_id)
 
         self.add_flower_btn.clicked.connect(self.add_card_clckd)
         self.open_flower_btn.clicked.connect(self.open_card_clckd)
-        self.delete_flower_btn.clicked.connect(self.delete_card)
+        self.delete_flower_btn.clicked.connect(self.delete_card_clckd)
+        self.reload_btn.clicked.connect(self.reload_clckd)
         self.format_window()
 
     def format_window(self):
+        flower_lst = list(map(lambda x: (x[1], x[3], x[6], x[7]), self.flower_list))
         self.login_lbl.setText(f"Ваш логин: @{self.user_login}")
-        self.flower_table.setItem(0, 0, QTableWidgetItem("Text in column 1"))
-        self.flower_table.setItem(0, 1, QTableWidgetItem("Text in column 2"))
-        self.flower_table.setItem(0, 2, QTableWidgetItem("Text in column 3"))
-        
+        self.flower_table.setRowCount(len(flower_lst))
+        for flower_lst_index, flower in enumerate(flower_lst): 
+            for element_index, element in enumerate(flower):
+                    self.flower_table.setItem(flower_lst_index, element_index, QTableWidgetItem(element))
+            
 
 
     def open_card_clckd(self):
@@ -49,8 +53,12 @@ class Main_window(QWidget):
         pass
 
 
-    def delete_card(self):
+    def delete_card_clckd(self):
         pass
+
+    def reload_clckd(self):
+        self.flower_list = db_operation.load_flowers_for_table(self.user_id)
+        self.format_window(self)
 
 
 if __name__ == "__main__":
