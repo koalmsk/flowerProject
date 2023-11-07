@@ -20,7 +20,7 @@ from PyQt5.QtWidgets import (
 
 class Flower_card_window(QWidget):
     def __init__(self, config: Flower_card) -> None:
-        super().init()
+        super().__init__()
         uic.loadUi('qt_ui/flowerCard.ui', self)
         self.config = config
         self.formating()

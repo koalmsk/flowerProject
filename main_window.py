@@ -2,7 +2,7 @@ import db_operation
 from PyQt5.QtCore import QPoint
 from PyQt5 import uic
 import sys
-from login_window import Login_window
+from flower_registr_window import Flower_registr
 import datetime
 from PyQt5.QtGui import QImage, QPixmap   
 from PyQt5.QtWidgets import (
@@ -50,7 +50,8 @@ class Main_window(QWidget):
 
 
     def add_card_clckd(self):
-        pass
+        self.flower_registr_exemplar = Flower_registr(self.user_id)
+        self.flower_registr_exemplar.show()
 
 
     def delete_card_clckd(self):
@@ -58,12 +59,11 @@ class Main_window(QWidget):
 
     def reload_clckd(self):
         self.flower_list = db_operation.load_flowers_for_table(self.user_id)
-        self.format_window(self)
+        self.format_window()
 
 
-if __name__ == "__main__":
+if __name__ == "main":
     app = QApplication(sys.argv)
     example_window = Main_window(1)
     example_window.show()
     sys.exit(app.exec())
-    

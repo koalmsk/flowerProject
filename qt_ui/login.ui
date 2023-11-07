@@ -3,7 +3,7 @@
  <class>Form</class>
  <widget class="QWidget" name="Form">
   <property name="windowModality">
-   <enum>Qt::ApplicationModal</enum>
+   <enum>Qt::NonModal</enum>
   </property>
   <property name="geometry">
    <rect>
@@ -52,6 +52,11 @@
      <width>71</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Пароль</string>
@@ -108,6 +113,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Логин</string>
    </property>
@@ -128,6 +138,54 @@
    </property>
    <property name="text">
     <string>Вход</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="wrong_login_or_passsword">
+   <property name="geometry">
+    <rect>
+     <x>28</x>
+     <y>190</y>
+     <width>351</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>8</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+     <underline>true</underline>
+    </font>
+   </property>
+   <property name="text">
+    <string>Неверный логин или пароль</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="wrong_inputs">
+   <property name="geometry">
+    <rect>
+     <x>28</x>
+     <y>80</y>
+     <width>351</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>8</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+     <underline>true</underline>
+    </font>
+   </property>
+   <property name="text">
+    <string>Заполните все поля ввода</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
