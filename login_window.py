@@ -19,10 +19,12 @@ from PyQt5.QtWidgets import (
 
 class Login_window(QWidget):
     def __init__(self) -> None:
-        super().__init__()
+        super().init()
         uic.loadUi('qt_ui/login.ui', self)
         self.show()
+        self.id = int()
         self.registr_btn.clicked.connect(self.registr_clicked)
+        self.log_in_btn.clicked.connect(self.registr_clicked)
         
 
     def registr_clicked(self):
@@ -30,4 +32,6 @@ class Login_window(QWidget):
         self.registr_window.show()
 
 
-        
+    def log_in_clckd(self):
+        login_input = self.login_input.text()
+        password_input = self.password_input.text()

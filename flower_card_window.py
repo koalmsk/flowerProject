@@ -20,11 +20,12 @@ from PyQt5.QtWidgets import (
 
 class Flower_card_window(QWidget):
     def __init__(self, config: Flower_card) -> None:
-        super().__init__()
+        super().init()
         uic.loadUi('qt_ui/flowerCard.ui', self)
         self.config = config
         self.formating()
         self.add_new_photo_btn.clicked.connect(self.add_new_photo_clckd)
+        self.is_water.stateChanged.connect(self.check_box_clckd)
         self.reload_btn.clicked.connect(self.reload)
 
     def reload(self):
@@ -68,18 +69,22 @@ class Flower_card_window(QWidget):
         self.next_date.setText(f"Дата следующей поливки: {self.config.next_date.strftime('%a %d %b %Y')}")
 
         # чек бокс
-        print(datetime.datetime.now().date() == self.config.next_date)
-        if datetime.datetime.now().date() != self.config.next_date:
+        if datetime.datetime.now().date() < self.config.next_date:
             self.is_water.setDisabled(True)
 
-        if datetime.datetime.now().date() == self.config.next_date:
+        if datetime.datetime.now().date() >= self.config.next_date:
             self.is_water.setEnabled(True)
 
+    def check_box_clckd(self):
+        if self.is_water.isChecked():
+            next_date = str(datetime.datetime.now().date() + self.config.how_often_to_water).replace("-", ".")
+            new_last_water_date = str(datetime.datetime.now().date()).replace("-", ".")
+            db_operation.update_flower_card(self.config.id, self.config.name, "next_date", next_date)
+            db_operation.update_flower_card(self.config.id, self.config.name, "last_water_date", new_last_water_date)
+            # self.reload()
 
-
-if __name__ == "__main__":
+if __name__ == "main":
     app = QApplication(sys.argv)
     example_window = Flower_card_window(Flower_card(*db_operation.load_flower_by_name("RAR", 1)))
     example_window.show()
     sys.exit(app.exec())
-    

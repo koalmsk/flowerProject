@@ -20,7 +20,6 @@ class Flower_card:
         self.photo = photo
         self.planted = date(*tuple(map(int , planted.split(".")))).strftime("%a %d %b %Y")
         self.recomendation = recomendation.capitalize().strip().replace(".", "\n")
-        self.how_often_to_water = timedelta(days=how_often_to_water)
+        self.how_often_to_water = timedelta(days=int(how_often_to_water))
         self.last_water_date = date(*tuple(map(int, last_water_date.split("."))))
         self.next_date = date(*tuple(map(int , next_date.split("."))))
-
