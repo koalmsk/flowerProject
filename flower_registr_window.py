@@ -1,21 +1,8 @@
-from PyQt5.QtCore import QPoint
 from PyQt5 import uic
 import sys
 import db_operation
 import datetime
-from PyQt5.QtGui import QImage, QPixmap   
-from PyQt5.QtWidgets import (
-    QApplication,
-    QWidget,
-    QPushButton,
-    QLineEdit,
-    QDateEdit,
-    QCalendarWidget,
-    QLabel,
-    QCheckBox,
-    QPlainTextEdit,
-    QFileDialog
-    )
+from PyQt5.QtWidgets import (QApplication,QWidget,QFileDialog)
 
 def is_normal_date(date: str) -> bool:
     date = tuple(map(int, date.split(".")))

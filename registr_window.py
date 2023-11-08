@@ -1,18 +1,9 @@
 import db_operation
-from PyQt5.QtCore import QPoint
 from PyQt5 import uic
 import sys
-import datetime
-from PyQt5.QtGui import QImage, QPixmap   
 from PyQt5.QtWidgets import (
     QApplication,
-    QWidget,
-    QPushButton,
-    QLineEdit,
-    QLabel,
-    QCheckBox,
-    QPlainTextEdit,
-    QFileDialog
+    QWidget
     )
 
 class Registr_window(QWidget):
@@ -60,12 +51,4 @@ class Registr_window(QWidget):
         db_operation.insert_user(user_data=input_data[:-1])
         self.title_lable.setText(f"Вы успешно зарегистрировали пользователя\n{input_data[0]}!")
         return None
-
-        
-
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    example_window = Registr_window()
-    example_window.show()
-    sys.exit(app.exec())
     

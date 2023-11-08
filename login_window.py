@@ -1,21 +1,9 @@
 import db_operation
-from PyQt5.QtCore import QPoint
 from PyQt5 import uic
-import sys
 from main_window import Main_window
 from registr_window import Registr_window
 import datetime
-from PyQt5.QtGui import QImage, QPixmap   
-from PyQt5.QtWidgets import (
-    QApplication,
-    QWidget,
-    QPushButton,
-    QLineEdit,
-    QLabel,
-    QCheckBox,
-    QPlainTextEdit,
-    QFileDialog
-    )
+from PyQt5.QtWidgets import QWidget
 
 
 class Login_window(QWidget):
@@ -50,9 +38,11 @@ class Login_window(QWidget):
             self.wrong_login_or_passsword.show()
             return None
         
-        main_window_exemplar = Main_window(try_log_in)
-        main_window_exemplar.show()
+        self.main_window_exemplar = Main_window(try_log_in)
+        self.main_window_exemplar.show()
+        self.hide()
         
 
-        
+
+
         

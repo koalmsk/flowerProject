@@ -3,14 +3,14 @@
  <class>Form</class>
  <widget class="QWidget" name="Form">
   <property name="windowModality">
-   <enum>Qt::ApplicationModal</enum>
+   <enum>Qt::NonModal</enum>
   </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>519</width>
-    <height>424</height>
+    <width>575</width>
+    <height>435</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -21,14 +21,14 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>0</width>
-    <height>0</height>
+    <width>575</width>
+    <height>435</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>750</width>
-    <height>600</height>
+    <width>575</width>
+    <height>435</height>
    </size>
   </property>
   <property name="sizeIncrement">
@@ -43,7 +43,7 @@
   <widget class="QPushButton" name="add_flower_btn">
    <property name="geometry">
     <rect>
-     <x>266</x>
+     <x>294</x>
      <y>370</y>
      <width>113</width>
      <height>41</height>
@@ -63,9 +63,9 @@
    <property name="geometry">
     <rect>
      <x>14</x>
-     <y>70</y>
-     <width>491</width>
-     <height>271</height>
+     <y>80</y>
+     <width>547</width>
+     <height>261</height>
     </rect>
    </property>
    <property name="widgetResizable">
@@ -76,8 +76,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>489</width>
-      <height>269</height>
+      <width>545</width>
+      <height>259</height>
      </rect>
     </property>
     <widget class="QTableWidget" name="flower_table">
@@ -85,7 +85,7 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>491</width>
+       <width>547</width>
        <height>271</height>
       </rect>
      </property>
@@ -98,6 +98,33 @@
      <property name="toolTip">
       <string comment="Вы вошли под этим логином" extracomment="Вы вошли под этим логином"/>
      </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+     <property name="dragEnabled">
+      <bool>true</bool>
+     </property>
+     <property name="alternatingRowColors">
+      <bool>false</bool>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <property name="gridStyle">
+      <enum>Qt::SolidLine</enum>
+     </property>
+     <attribute name="horizontalHeaderVisible">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="horizontalHeaderMinimumSectionSize">
+      <number>100</number>
+     </attribute>
+     <attribute name="verticalHeaderDefaultSectionSize">
+      <number>30</number>
+     </attribute>
      <column>
       <property name="text">
        <string>Имя</string>
@@ -124,7 +151,7 @@
   <widget class="QPushButton" name="delete_flower_btn">
    <property name="geometry">
     <rect>
-     <x>392</x>
+     <x>434</x>
      <y>370</y>
      <width>113</width>
      <height>41</height>
@@ -180,7 +207,7 @@
   <widget class="QPushButton" name="reload_btn">
    <property name="geometry">
     <rect>
-     <x>140</x>
+     <x>154</x>
      <y>370</y>
      <width>113</width>
      <height>41</height>

@@ -1,27 +1,16 @@
 from flower_card import Flower_card
-from PyQt5.QtCore import QPoint
 from PyQt5 import uic
 import sys
 import datetime
 import db_operation
 from PyQt5.QtGui import QImage, QPixmap   
-from PyQt5.QtWidgets import (
-    QApplication,
-    QWidget,
-    QPushButton,
-    QLineEdit,
-    QLabel,
-    QCheckBox,
-    QPlainTextEdit,
-    QFileDialog
-    )
-
+from PyQt5.QtWidgets import QApplication, QWidget, QFileDialog
 
 
 class Flower_card_window(QWidget):
     def __init__(self, config: Flower_card) -> None:
         super().__init__()
-        uic.loadUi('qt_ui/flowerCard.ui', self)
+        uic.loadUi('qt_ui/flower_card.ui', self)
         self.config = config
         self.formating()
         self.add_new_photo_btn.clicked.connect(self.add_new_photo_clckd)

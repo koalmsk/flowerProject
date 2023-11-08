@@ -1,6 +1,4 @@
 import sqlite3
-import os
-
 
 db = sqlite3.connect("database/flower_db.sqlite3")
 cur = db.cursor()
@@ -120,4 +118,9 @@ def take_id(login: str, password: str):
         """SELECT user.id FROM user WHERE user.login = ? AND user.password = ?""",
         (login, password)).fetchone()
     return (False if ans is None else ans[0])
+
+
+def delete_flower(id: str, flower_name: str):
+    cur.execute(f"""DELETE FROM flower WHERE id = ? and name = ?""", (id, flower_name))
+    db.commit()
 
