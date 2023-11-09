@@ -1,8 +1,8 @@
 from flower_card import Flower_card
 from PyQt5 import uic
 import sys
-import datetime
 import db_operation
+import datetime
 from PyQt5.QtGui import QImage, QPixmap   
 from PyQt5.QtWidgets import QApplication, QWidget, QFileDialog
 
@@ -72,8 +72,3 @@ class Flower_card_window(QWidget):
             db_operation.update_flower_card(self.config.id, self.config.name, "last_water_date", new_last_water_date)
             # self.reload()
 
-if __name__ == "main":
-    app = QApplication(sys.argv)
-    example_window = Flower_card_window(Flower_card(*db_operation.load_flower_by_name("RAR", 1)))
-    example_window.show()
-    sys.exit(app.exec())

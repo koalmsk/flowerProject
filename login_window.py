@@ -2,7 +2,6 @@ import db_operation
 from PyQt5 import uic
 from main_window import Main_window
 from registr_window import Registr_window
-import datetime
 from PyQt5.QtWidgets import QWidget
 
 

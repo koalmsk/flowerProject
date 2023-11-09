@@ -53,7 +53,6 @@ class Flower_registr(QWidget):
             self.how_often_to_water_input.text(),
             correct_date(self.last_water_date_input.text())
         ]
-        print(self.text_data)
         next_date = str(
             datetime.date(
                 *tuple(
@@ -62,8 +61,6 @@ class Flower_registr(QWidget):
                 ).replace("-", ".")
         self.text_data.append(correct_date(next_date, False))
 
-
-        print(self.text_data)
         return all(self.text_data)
 
 
@@ -102,10 +99,4 @@ class Flower_registr(QWidget):
         return None
     
 
-        
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    example_window = Flower_registr(1)
-    example_window.show()
-    sys.exit(app.exec())
     

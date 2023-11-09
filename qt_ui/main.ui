@@ -98,11 +98,23 @@
      <property name="toolTip">
       <string comment="Вы вошли под этим логином" extracomment="Вы вошли под этим логином"/>
      </property>
+     <property name="autoScroll">
+      <bool>false</bool>
+     </property>
      <property name="editTriggers">
       <set>QAbstractItemView::NoEditTriggers</set>
      </property>
+     <property name="tabKeyNavigation">
+      <bool>false</bool>
+     </property>
+     <property name="showDropIndicator" stdset="0">
+      <bool>false</bool>
+     </property>
      <property name="dragEnabled">
-      <bool>true</bool>
+      <bool>false</bool>
+     </property>
+     <property name="dragDropOverwriteMode">
+      <bool>false</bool>
      </property>
      <property name="alternatingRowColors">
       <bool>false</bool>
