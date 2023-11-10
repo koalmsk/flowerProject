@@ -2,3 +2,5 @@
 flower_venv/
 __pycache__/
 test.py
+mac_venv/
+database/flower_db.sqlite3
