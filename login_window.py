@@ -9,6 +9,7 @@ class Login_window(QWidget):
     def __init__(self) -> None:
         super().__init__()
         uic.loadUi('qt_ui/login.ui', self)
+        self.setWindowTitle("Flower_manager")
         self.show()
         self.wrong_login_or_passsword.hide()
         self.wrong_inputs.hide()

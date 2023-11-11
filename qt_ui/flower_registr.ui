@@ -2,11 +2,14 @@
 <ui version="4.0">
  <class>Form</class>
  <widget class="QWidget" name="Form">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>775</width>
     <height>510</height>
    </rect>
   </property>
@@ -18,13 +21,13 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>800</width>
+    <width>775</width>
     <height>510</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>800</width>
+    <width>775</width>
     <height>510</height>
    </size>
   </property>
@@ -34,9 +37,9 @@
   <widget class="QLineEdit" name="flower_name_input">
    <property name="geometry">
     <rect>
-     <x>294</x>
-     <y>101</y>
-     <width>197</width>
+     <x>280</x>
+     <y>121</y>
+     <width>253</width>
      <height>31</height>
     </rect>
    </property>
@@ -52,8 +55,8 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>42</x>
-     <y>101</y>
+     <x>14</x>
+     <y>121</y>
      <width>253</width>
      <height>31</height>
     </rect>
@@ -70,9 +73,9 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>42</x>
-     <y>231</y>
-     <width>253</width>
+     <x>14</x>
+     <y>230</y>
+     <width>267</width>
      <height>31</height>
     </rect>
    </property>
@@ -88,9 +91,9 @@
   <widget class="QLineEdit" name="how_often_to_water_input">
    <property name="geometry">
     <rect>
-     <x>294</x>
-     <y>231</y>
-     <width>197</width>
+     <x>280</x>
+     <y>230</y>
+     <width>253</width>
      <height>31</height>
     </rect>
    </property>
@@ -106,10 +109,10 @@
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>504</x>
-     <y>231</y>
-     <width>281</width>
-     <height>31</height>
+     <x>322</x>
+     <y>260</y>
+     <width>169</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
@@ -122,9 +125,9 @@
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>42</x>
-     <y>291</y>
-     <width>253</width>
+     <x>14</x>
+     <y>290</y>
+     <width>267</width>
      <height>31</height>
     </rect>
    </property>
@@ -140,9 +143,9 @@
   <widget class="QTextEdit" name="recomendation_input">
    <property name="geometry">
     <rect>
-     <x>294</x>
-     <y>421</y>
-     <width>197</width>
+     <x>280</x>
+     <y>420</y>
+     <width>253</width>
      <height>81</height>
     </rect>
    </property>
@@ -157,9 +160,9 @@ p, li { white-space: pre-wrap; }
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>42</x>
-     <y>421</y>
-     <width>253</width>
+     <x>14</x>
+     <y>420</y>
+     <width>267</width>
      <height>21</height>
     </rect>
    </property>
@@ -180,7 +183,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>560</x>
      <y>420</y>
-     <width>183</width>
+     <width>197</width>
      <height>81</height>
     </rect>
    </property>
@@ -191,8 +194,8 @@ p, li { white-space: pre-wrap; }
   <widget class="QLabel" name="label_6">
    <property name="geometry">
     <rect>
-     <x>42</x>
-     <y>161</y>
+     <x>14</x>
+     <y>180</y>
      <width>253</width>
      <height>41</height>
     </rect>
@@ -209,9 +212,9 @@ p, li { white-space: pre-wrap; }
   <widget class="QPushButton" name="photo_input_btn">
    <property name="geometry">
     <rect>
-     <x>294</x>
-     <y>161</y>
-     <width>197</width>
+     <x>280</x>
+     <y>180</y>
+     <width>253</width>
      <height>41</height>
     </rect>
    </property>
@@ -222,9 +225,9 @@ p, li { white-space: pre-wrap; }
   <widget class="QDateEdit" name="last_water_date_input">
    <property name="geometry">
     <rect>
-     <x>294</x>
-     <y>290</y>
-     <width>197</width>
+     <x>280</x>
+     <y>289</y>
+     <width>253</width>
      <height>31</height>
     </rect>
    </property>
@@ -232,9 +235,9 @@ p, li { white-space: pre-wrap; }
   <widget class="QDateEdit" name="when_planted_input">
    <property name="geometry">
     <rect>
-     <x>294</x>
+     <x>280</x>
      <y>351</y>
-     <width>197</width>
+     <width>253</width>
      <height>31</height>
     </rect>
    </property>
@@ -242,9 +245,9 @@ p, li { white-space: pre-wrap; }
   <widget class="QLabel" name="label_7">
    <property name="geometry">
     <rect>
-     <x>42</x>
+     <x>14</x>
      <y>350</y>
-     <width>253</width>
+     <width>267</width>
      <height>31</height>
     </rect>
    </property>
@@ -260,9 +263,9 @@ p, li { white-space: pre-wrap; }
   <widget class="QLabel" name="flowe_title">
    <property name="geometry">
     <rect>
-     <x>14</x>
+     <x>0</x>
      <y>10</y>
-     <width>771</width>
+     <width>799</width>
      <height>41</height>
     </rect>
    </property>
@@ -278,33 +281,15 @@ p, li { white-space: pre-wrap; }
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="flower_photo_directory_lable">
-   <property name="geometry">
-    <rect>
-     <x>504</x>
-     <y>160</y>
-     <width>281</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>8</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>TextLabel</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="wrong_inputs_lable">
    <property name="enabled">
     <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
-     <x>14</x>
+     <x>0</x>
      <y>60</y>
-     <width>771</width>
+     <width>799</width>
      <height>21</height>
     </rect>
    </property>
@@ -328,10 +313,10 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="geometry">
     <rect>
-     <x>490</x>
-     <y>100</y>
-     <width>295</width>
-     <height>31</height>
+     <x>280</x>
+     <y>150</y>
+     <width>253</width>
+     <height>21</height>
     </rect>
    </property>
    <property name="font">
@@ -355,10 +340,10 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="geometry">
     <rect>
-     <x>490</x>
-     <y>290</y>
-     <width>295</width>
-     <height>31</height>
+     <x>308</x>
+     <y>320</y>
+     <width>197</width>
+     <height>16</height>
     </rect>
    </property>
    <property name="font">
@@ -382,10 +367,10 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="geometry">
     <rect>
-     <x>490</x>
-     <y>350</y>
-     <width>295</width>
-     <height>31</height>
+     <x>308</x>
+     <y>380</y>
+     <width>197</width>
+     <height>16</height>
     </rect>
    </property>
    <property name="font">
@@ -401,6 +386,19 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="flower_photo_preview">
+   <property name="geometry">
+    <rect>
+     <x>546</x>
+     <y>90</y>
+     <width>211</width>
+     <height>200</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>

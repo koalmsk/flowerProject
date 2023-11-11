@@ -47,15 +47,6 @@ def take_user(login: str) -> tuple:
     return ans
 
 
-def take_flower(flower_name: str) -> tuple:
-    sql_request = """
-    SELECT * FROM flower
-    WHERE flower.name = (?)
-    """
-
-    ans = cur.execute(sql_request, (flower_name, )).fetchone()
-    return ans
-
 
 def is_login_uniq(name: str) -> bool:
     sql_request = """

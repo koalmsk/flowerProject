@@ -72,7 +72,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Регbстрация</string>
+    <string>Регестрация</string>
    </property>
   </widget>
   <widget class="QPushButton" name="log_in_btn">

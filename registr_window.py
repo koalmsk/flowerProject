@@ -10,6 +10,7 @@ class Registr_window(QWidget):
     def __init__(self) -> None:
         super().__init__()
         uic.loadUi('qt_ui/registr.ui', self)
+        self.setWindowTitle("Flower_manager")
         self.send_btn.clicked.connect(self.send_btn_clicked)
         self.on_start_up()
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>f</class>
+ <widget class="QWidget" name="f">
   <property name="windowModality">
    <enum>Qt::NonModal</enum>
   </property>
@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>575</width>
-    <height>435</height>
+    <width>545</width>
+    <height>410</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -21,14 +21,14 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>575</width>
-    <height>435</height>
+    <width>545</width>
+    <height>410</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>575</width>
-    <height>435</height>
+    <width>545</width>
+    <height>410</height>
    </size>
   </property>
   <property name="sizeIncrement">
@@ -43,9 +43,9 @@
   <widget class="QPushButton" name="add_flower_btn">
    <property name="geometry">
     <rect>
-     <x>294</x>
-     <y>370</y>
-     <width>113</width>
+     <x>14</x>
+     <y>360</y>
+     <width>127</width>
      <height>41</height>
     </rect>
    </property>
@@ -64,7 +64,7 @@
     <rect>
      <x>14</x>
      <y>80</y>
-     <width>547</width>
+     <width>519</width>
      <height>261</height>
     </rect>
    </property>
@@ -76,7 +76,7 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>545</width>
+      <width>517</width>
       <height>259</height>
      </rect>
     </property>
@@ -85,8 +85,8 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>547</width>
-       <height>271</height>
+       <width>519</width>
+       <height>261</height>
       </rect>
      </property>
      <property name="minimumSize">
@@ -144,12 +144,12 @@
      </column>
      <column>
       <property name="text">
-       <string>Был посажен</string>
+       <string>Полить сегодня</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Последний раз был полит</string>
+       <string>Был полит</string>
       </property>
      </column>
      <column>
@@ -157,34 +157,20 @@
        <string>Нужно полить</string>
       </property>
      </column>
+     <column>
+      <property name="text">
+       <string>Был посажен</string>
+      </property>
+     </column>
     </widget>
    </widget>
-  </widget>
-  <widget class="QPushButton" name="delete_flower_btn">
-   <property name="geometry">
-    <rect>
-     <x>434</x>
-     <y>370</y>
-     <width>113</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="text">
-    <string>Удалить цветок </string>
-   </property>
   </widget>
   <widget class="QPushButton" name="open_flower_btn">
    <property name="geometry">
     <rect>
-     <x>14</x>
-     <y>370</y>
-     <width>113</width>
+     <x>154</x>
+     <y>360</y>
+     <width>127</width>
      <height>41</height>
     </rect>
    </property>
@@ -201,10 +187,10 @@
   <widget class="QLabel" name="login_lbl">
    <property name="geometry">
     <rect>
-     <x>14</x>
+     <x>308</x>
      <y>10</y>
-     <width>491</width>
-     <height>51</height>
+     <width>211</width>
+     <height>61</height>
     </rect>
    </property>
    <property name="font">
@@ -215,18 +201,58 @@
    <property name="text">
     <string>user_login</string>
    </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
   </widget>
   <widget class="QPushButton" name="reload_btn">
    <property name="geometry">
     <rect>
-     <x>154</x>
-     <y>370</y>
+     <x>294</x>
+     <y>360</y>
      <width>113</width>
      <height>41</height>
     </rect>
    </property>
    <property name="text">
     <string>Обновить</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="flower_for_water">
+   <property name="geometry">
+    <rect>
+     <x>14</x>
+     <y>10</y>
+     <width>295</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="delete_flower_btn">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>360</y>
+     <width>113</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="text">
+    <string>Удалить цветок </string>
    </property>
   </widget>
  </widget>

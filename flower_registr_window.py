@@ -1,8 +1,14 @@
 from PyQt5 import uic
-import sys
 import db_operation
 import datetime
-from PyQt5.QtWidgets import (QApplication,QWidget,QFileDialog)
+from PyQt5.QtGui import QImage, QPixmap
+from PyQt5.QtCore import QDate
+from PyQt5.QtWidgets import (
+    QWidget, 
+    QFileDialog,
+    QApplication
+    
+    )
 
 def is_normal_date(date: str) -> bool:
     date = tuple(map(int, date.split(".")))
@@ -15,13 +21,13 @@ def correct_date(date_: str, f=True) -> str:
     return ".".join(tuple(map(lambda x: str(int(x)), date_.split("."))))
 
 
-
 class Flower_registr(QWidget):
     def __init__(self, id) -> None:
         super().__init__()
         uic.loadUi('qt_ui/flower_registr.ui', self)
         self.id = id
         self.on_start_up()
+        self.setWindowTitle("Flower_manager")
         self.photo_input_btn.clicked.connect(self.photo_input_btn_clckd)
         self.save_card_btn.clicked.connect(self.save_flower_clckd)
 
@@ -31,7 +37,6 @@ class Flower_registr(QWidget):
         self.wrong_date_lable_2.hide()
         self.wrong_inputs_lable.hide()
         self.wrong_flower_name_lable.hide()
-        self.flower_photo_directory_lable.hide()
 
     def on_start_up(self): 
         self.hide_wrongs()       
@@ -42,6 +47,9 @@ class Flower_registr(QWidget):
         self.how_often_to_water_input.setText("0")
         self.last_water_date_input.setCalendarPopup(True)
         self.when_planted_input.setCalendarPopup(True)
+        self.last_water_date_input.setDate(datetime.datetime.now().date())
+        self.when_planted_input.setDate(datetime.datetime.now().date())
+
 
     def get_data(self):
         self.text_data = [
@@ -66,11 +74,15 @@ class Flower_registr(QWidget):
 
 
     def photo_input_btn_clckd(self):
-        file_name = QFileDialog.getOpenFileName(self, 'Выберите картинку', '', 'Картинка (*.jpg);;Картинка (*.png)')[0]
+        file_name = QFileDialog.getOpenFileName(
+            self, 'Выберите картинку', '', 'Картинка (*.jpg);;Картинка (*.png)')[0]
+        
         self.flower_photo = file_name
         if file_name:
-            self.flower_photo_directory_lable.setText(file_name)
-            self.flower_photo_directory_lable.show()
+            photo  = QImage(file_name)
+            pixmap = QPixmap.fromImage(photo)
+            self.flower_photo_preview.setScaledContents(True)
+            self.flower_photo_preview.setPixmap(pixmap)
 
 
     def save_flower_clckd(self) -> None:
@@ -96,7 +108,8 @@ class Flower_registr(QWidget):
 
         db_operation.insert_flower(self.text_data)
         self.flowe_title.setText(f"Вы успешно зарегистировали ростение {self.text_data[1]}")
+        self.save_card_btn.setDisabled(True)
         return None
     
 
-    
+

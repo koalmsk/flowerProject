@@ -3,7 +3,7 @@
  <class>Form</class>
  <widget class="QWidget" name="Form">
   <property name="windowModality">
-   <enum>Qt::WindowModal</enum>
+   <enum>Qt::ApplicationModal</enum>
   </property>
   <property name="enabled">
    <bool>true</bool>
@@ -31,7 +31,7 @@
   <property name="maximumSize">
    <size>
     <width>1002</width>
-    <height>16777215</height>
+    <height>388</height>
    </size>
   </property>
   <property name="sizeIncrement">
@@ -174,7 +174,7 @@ p, li { white-space: pre-wrap; }
    <property name="geometry">
     <rect>
      <x>560</x>
-     <y>281</y>
+     <y>270</y>
      <width>435</width>
      <height>50</height>
     </rect>
@@ -271,6 +271,29 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="text">
     <string>⭮</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="water_info_lable">
+   <property name="geometry">
+    <rect>
+     <x>532</x>
+     <y>330</y>
+     <width>463</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
  </widget>
