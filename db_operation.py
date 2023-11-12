@@ -7,7 +7,6 @@ cur = db.cursor()
 def format_collections_from_sql(collection) -> list:
     return list(map(lambda x: x[0], collection))
 
-
 def on_start_up():
     CREATE_FLOWER_TABLE = """
 CREATE TABLE IF NOT EXISTS flower (

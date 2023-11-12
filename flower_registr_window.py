@@ -1,6 +1,7 @@
 from PyQt5 import uic
 import db_operation
 import datetime
+import sys
 from PyQt5.QtGui import QImage, QPixmap
 from PyQt5.QtCore import QDate
 from PyQt5.QtWidgets import (
@@ -37,6 +38,7 @@ class Flower_registr(QWidget):
         self.wrong_date_lable_2.hide()
         self.wrong_inputs_lable.hide()
         self.wrong_flower_name_lable.hide()
+        self.wrong_timedelta.setText("(Дневной Интервал)")
 
     def on_start_up(self): 
         self.hide_wrongs()       
@@ -61,14 +63,6 @@ class Flower_registr(QWidget):
             self.how_often_to_water_input.text(),
             correct_date(self.last_water_date_input.text())
         ]
-        next_date = str(
-            datetime.date(
-                *tuple(
-                    map(int, self.text_data[-1].split("."))
-                    )) + datetime.timedelta(days=int(self.text_data[-2]))
-                ).replace("-", ".")
-        self.text_data.append(correct_date(next_date, False))
-
         return all(self.text_data)
 
 
@@ -97,7 +91,11 @@ class Flower_registr(QWidget):
             self.wrong_flower_name_lable.show()
             return None
         
-        if not is_normal_date(self.text_data[-2]):
+        if not self.text_data[-2].isdigit():
+            self.wrong_timedelta.setText("Введите числовое значение")
+            return None
+
+        if not is_normal_date(self.text_data[-1]):
             self.wrong_date_lable_1.show()
             return None
 
@@ -105,6 +103,12 @@ class Flower_registr(QWidget):
         if not is_normal_date(self.text_data[3]):
             self.wrong_date_lable_2.show()
             return None
+        
+
+        self.text_data.append(correct_date(str(
+            datetime.date(
+                *tuple(map(int, self.text_data[-1].split(".")))) + datetime.timedelta(days=int(self.text_data[-2]))
+                    ).replace("-", "."), False))
 
         db_operation.insert_flower(self.text_data)
         self.flowe_title.setText(f"Вы успешно зарегистировали ростение {self.text_data[1]}")
@@ -112,4 +116,11 @@ class Flower_registr(QWidget):
         return None
     
 
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    example_window = Flower_registr(1)
+    db_operation.on_start_up()
+    example_window.show()
+    sys.exit(app.exec())
 
