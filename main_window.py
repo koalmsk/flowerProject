@@ -1,16 +1,12 @@
-from PyQt5.QtCore import QPoint
 from PyQt5 import uic
-import sys
 import db_operation
 from flower_card_window import Flower_card_window
 from flower_card import Flower_card
 import datetime
 from flower_registr_window import Flower_registr 
 from PyQt5.QtWidgets import (
-    QApplication,
     QWidget,
     QTableWidgetItem,
-    QTableWidget
     
     )
 
@@ -81,11 +77,4 @@ class Main_window(QWidget):
         self.flower_name_selected = False
         self.format_window()
 
-
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    example_window = Main_window(1)
-    db_operation.on_start_up()
-    example_window.show()
-    sys.exit(app.exec())
 

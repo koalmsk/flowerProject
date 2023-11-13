@@ -1,10 +1,9 @@
 from flower_card import Flower_card
 from PyQt5 import uic
-import sys
 import db_operation
 import datetime
 from PyQt5.QtGui import QImage, QPixmap   
-from PyQt5.QtWidgets import QApplication, QWidget, QFileDialog
+from PyQt5.QtWidgets import  QWidget, QFileDialog
 
 
 class Flower_card_window(QWidget):

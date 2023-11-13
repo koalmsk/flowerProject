@@ -1,13 +1,10 @@
 from PyQt5 import uic
 import db_operation
 import datetime
-import sys
 from PyQt5.QtGui import QImage, QPixmap
-from PyQt5.QtCore import QDate
 from PyQt5.QtWidgets import (
     QWidget, 
     QFileDialog,
-    QApplication
     
     )
 
@@ -114,13 +111,3 @@ class Flower_registr(QWidget):
         self.flowe_title.setText(f"Вы успешно зарегистировали ростение {self.text_data[1]}")
         self.save_card_btn.setDisabled(True)
         return None
-    
-
-
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    example_window = Flower_registr(1)
-    db_operation.on_start_up()
-    example_window.show()
-    sys.exit(app.exec())
-
